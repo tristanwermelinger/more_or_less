@@ -3,7 +3,7 @@ const express = require("express");
 const app = express();
 app.use(express.json());
 
-const number = 0, 100;
+const number = 0;
 const num = number;
 
 app.get("/guess", (req, res) => {
