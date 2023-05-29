@@ -6,6 +6,12 @@ app.use(express.json());
 const number = 0;
 const num = number;
 
+// function getRandomInt(max) {
+//   return Math.floor(Math.random() * 100);
+// }
+
+// console.log(getRandomInt());
+
 app.get("/guess", (req, res) => {
   if (num <= 100) {
     console.log(req.query);
