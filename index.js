@@ -16,8 +16,12 @@ app.get("/guess", (req, res) => {
   if (num <= 100) {
     console.log(req.query);
     res.json({ messsage: "number recived" });
-  } else if (num >= 0) {
-    console.log(req.query);
+  } else if (num > 100) {
+    console.log("Le chiffre doit être inférieur à 100");
+  } else if (num < 0) {
+    console.log("Le chiffre doir être suprieur ou égla à 0");
+  } else {
+    console.log("Veuillez renseigner un nombre");
   }
 });
 
