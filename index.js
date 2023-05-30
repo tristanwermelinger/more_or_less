@@ -3,25 +3,28 @@ const express = require("express");
 const app = express();
 app.use(express.json());
 
-const number = 0;
-const num = number;
-
-// function getRandomInt(max) {
-//   return Math.floor(Math.random() * 100);
-// }
+const getRandomInt = () => {
+  return Math.floor(Math.random() * 100);
+};
 
 // console.log(getRandomInt());
 
+const randomNum = getRandomInt();
+console.log(randomNum);
+
 app.get("/guess", (req, res) => {
-  if (num <= 100) {
-    console.log(req.query);
-    res.json({ messsage: "number recived" });
-  } else if (num > 100) {
-    console.log("Le chiffre doit être inférieur à 100");
-  } else if (num < 0) {
-    console.log("Le chiffre doir être suprieur ou égla à 0");
-  } else {
-    console.log("Veuillez renseigner un nombre");
+  //   console.log(typeof req.query.num);
+
+  if (req.query.num > 100) {
+    return res.status(400).json("Le chiffre doit être inférieur à 100");
+  } else if (req.query.num < 0) {
+    return res.status(400).json("Le chiffre doir être suprieur ou égale à 0");
+  } else if (Number(req.query.num) === randomNum) {
+    return res.status(200).json("Le chiffre est trouvé");
+  } else if (req.query.num < randomNum) {
+    return res.status(400).json("Le chiffre est supérieur");
+  } else if (req.query.num > randomNum) {
+    return res.status(400).json("Le chiffre est inférieur ");
   }
 });
 
